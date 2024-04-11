@@ -204,6 +204,10 @@ void n2adr_oc_settings() {
   band->OCrx = band->OCtx = 96;
   band = band_get_band(band10);
   band->OCrx = band->OCtx = 96;
+  // since none of the WWV stations are < 2Mhz, this should activate the 
+  // appropriate filter to filter out strong AM stations.
+  band = band_get_band(bandWWV);
+  band->OCrx = band->OCtx = 64;
   schedule_high_priority();
 }
 
